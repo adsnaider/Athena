@@ -1,12 +1,24 @@
 [workspace]
 members = [
-  "athena/*"
+  "athena/kapi",
+  "athena/microkernel",
+  "athena/sync",
+  "athena/trie",
+  "athena/userspace/booter",
+  "athena/userspace/librs",
 ]
 
 resolver = "2"
-default-members = ["athena/kernel"]
+default-members = ["athena/microkernel"]
 
-# Need some optimizations with or it's easy to run out of memory.
-# FIXME: Once we allocate larger stacks per threads.
+[workspace.dependencies]
+sync = { path = "athena/sync" }
+trie = { path = "athena/trie" }
+kapi = { path = "athena/kapi" }
+
 [profile.dev]
-opt-level = 2
+debug = "full"
+opt-level = 1
+
+[profile.release]
+debug = "full"
