@@ -1,4 +1,5 @@
-add-symbol-file .build/kernel -o 0xFFFF800000000000
+add-symbol-file .build/debugger/kernel
+add-symbol-file .build/debugger/booter
 layout split
 set trace-commands on
 set logging enabled on
